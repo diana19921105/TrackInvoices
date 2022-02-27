@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice view #</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta charset="utf-8"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+<h1>Invoice Details</h1>
+
+<form>
+    <label> Customer name: <input th:value="${customerName}" disabled/> </label>
+    <label> Issue date: <input th:value="${issueDate}" disabled/> </label>
+    <label> Due date: <input th:value="${dueDate}" disabled/> </label>
+    <label> Comment: <input th:value="${comment}" disabled/> </label>
+    <label> Total price: <input th:value="${totalPrice}" disabled/> </label>
+</form>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Product name</th>
+        <th scope="col">Unit price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total item price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item: ${items}">
+        <td th:text="${item.getProductName()}"></td>
+        <td th:text="${item.getPrice()}"></td>
+        <td th:text="${item.getQuantity()}"></td>
+        <td th:text="${item.getTotalPrice()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="button-container">
+    <a class="btn btn-primary back-button" th:href="'/invoices'" role="button">Back</a>
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
