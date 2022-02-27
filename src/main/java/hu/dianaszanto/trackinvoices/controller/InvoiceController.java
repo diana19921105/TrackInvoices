@@ -1,7 +1,7 @@
 package hu.dianaszanto.trackinvoices.controller;
 
 import hu.dianaszanto.trackinvoices.model.Invoice;
-import hu.dianaszanto.trackinvoices.model.exception.NoSuchInvoiceException;
+import hu.dianaszanto.trackinvoices.model.exception.NoSuchInvoiceExistException;
 import hu.dianaszanto.trackinvoices.service.InvoiceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class InvoiceController {
     private final InvoiceService invoiceService;
-
 
     @GetMapping("/invoices")
     public String getAllInvoices(Model model,
@@ -46,8 +45,9 @@ public class InvoiceController {
             model.addAttribute("comment", invoice.getComment());
             model.addAttribute("totalPrice", invoice.getTotalPrice());
             return "invoiceview";
-        } catch (NoSuchInvoiceException e) {
+        } catch (NoSuchInvoiceExistException e) {
             model.addAttribute("errorMessage", e.getMessage());
+            log.error(e.getMessage());
             return "error";
         }
 

@@ -2,7 +2,7 @@ package hu.dianaszanto.trackinvoices.service.impl;
 
 import hu.dianaszanto.trackinvoices.model.Invoice;
 import hu.dianaszanto.trackinvoices.model.InvoiceItem;
-import hu.dianaszanto.trackinvoices.model.exception.NoSuchInvoiceException;
+import hu.dianaszanto.trackinvoices.model.exception.NoSuchInvoiceExistException;
 import hu.dianaszanto.trackinvoices.repository.InvoiceRepository;
 import hu.dianaszanto.trackinvoices.service.InvoiceService;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +42,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public Invoice findById(Long id) {
-        Invoice invoice = invoiceRepository.findById(id).orElseThrow(() -> new NoSuchInvoiceException(id));
+        Invoice invoice = invoiceRepository.findById(id).orElseThrow(() -> new NoSuchInvoiceExistException(id));
 
         calculateTotalPrices(invoice, invoice.getItems());
 
