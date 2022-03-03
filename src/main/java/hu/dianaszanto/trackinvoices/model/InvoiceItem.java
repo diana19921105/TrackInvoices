@@ -1,9 +1,9 @@
 package hu.dianaszanto.trackinvoices.model;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -15,11 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Getter
-@Setter
 @ToString(exclude = "invoice")
 @EqualsAndHashCode(exclude = "invoice")
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "INVOICE_ITEM")
 public class InvoiceItem {
@@ -43,4 +42,55 @@ public class InvoiceItem {
     @JoinColumn(name = "invoice_id", nullable = false)
     private Invoice invoice;
 
+    public InvoiceItem(Long id, String productName, Integer price, Integer quantity, Integer totalPrice) {
+        this.id = id;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
 }

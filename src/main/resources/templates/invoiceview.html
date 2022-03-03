@@ -12,16 +12,18 @@
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
 <body>
-<h1>Invoice Details</h1>
+<p>Invoice Details</p>
 
 <form>
     <label> Customer name: <input th:value="${customerName}" disabled/> </label>
     <label> Issue date: <input th:value="${issueDate}" disabled/> </label>
     <label> Due date: <input th:value="${dueDate}" disabled/> </label>
     <label> Comment: <input th:value="${comment}" disabled/> </label>
-    <label> Total price: <input th:value="${totalPrice}" disabled/> </label>
+    <label> Total price (HUF): <input th:value="${totalPriceHUF}" disabled/> </label>
+    <label> Total price (EUR): <input th:value="${totalPriceEUR}" disabled/> </label>
 </form>
 
+<p>Invoice items</p>
 <table class="table table-hover">
     <thead>
     <tr>

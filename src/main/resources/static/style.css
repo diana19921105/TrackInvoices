@@ -1,4 +1,50 @@
-
 .button-container {
     text-align: center;
+    display: inline-block;
+    margin-left: 10%;
+    margin-right: auto;
+    padding: 12px 32px;
+    text-decoration: none;
+}
+
+p{
+    font-family: "Arial Black";
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: gray;
+    font-size: x-large;
+    font-weight: inherit;
+    font-family: "Adobe Devanagari", serif;
+    background-color: indianred;
+    color: white;
+    border-bottom: 3px solid #999999;
+}
+
+tbody {
+    font-family: "Roboto Light", serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: dimgrey;
+}
+
+tr:nth-child(even) {
+    background: beige;
+}
+
+td, th {
+    border: 1px solid beige;
+    border-collapse: collapse;
+    text-align: center;
+    width: 200px;
+    length: 100px;
+    padding: 10px;
+    border-radius: 10px;
 }

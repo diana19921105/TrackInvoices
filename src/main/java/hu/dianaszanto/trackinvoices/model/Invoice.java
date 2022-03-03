@@ -1,9 +1,8 @@
 package hu.dianaszanto.trackinvoices.model;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.CascadeType;
@@ -17,11 +16,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @ToString
 @EqualsAndHashCode
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,4 +45,44 @@ public class Invoice {
     @Column(name = "TOTAL_PRICE")
     private Integer totalPrice;
 
+    public Invoice(String customerName, LocalDate issueDate, LocalDate dueDate, String comment, List<InvoiceItem> items, Integer totalPriceInHUF) {
+        this.customerName = customerName;
+        this.issueDate = issueDate;
+        this.dueDate = dueDate;
+        this.comment = comment;
+        this.items = items;
+        this.totalPrice = totalPriceInHUF;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public LocalDate getIssueDate() {
+        return issueDate;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public List<InvoiceItem> getItems() {
+        return items;
+    }
+
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

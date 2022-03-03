@@ -1,10 +1,15 @@
 package hu.dianaszanto.trackinvoices.service;
 
 import hu.dianaszanto.trackinvoices.model.Invoice;
-import org.springframework.data.domain.Page;
+import hu.dianaszanto.trackinvoices.model.InvoiceResponseDTO;
+
+import java.util.List;
 
 public interface InvoiceService {
-    Page<Invoice> findAll(Integer page, Integer size);
+    List<InvoiceResponseDTO> findAll();
 
-    Invoice findById(Long id);
+    InvoiceResponseDTO findById(Long id);
+
+    void save(Invoice invoice);
+
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 </head>
 <body>
-<h1>Invoices</h1>
+<p>Invoices</p>
 
 <table class="table table-hover">
     <thead>
@@ -19,33 +19,22 @@
         <th scope="col">Issue date</th>
         <th scope="col">Due date</th>
         <th scope="col">Comment</th>
-        <th scope="col">Invoice total</th>
+        <th scope="col">Invoice total (HUF)</th>
+        <th scope="col">Invoice total (EUR)</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="invoice: ${page.getContent()}">
+    <tr th:each="invoice: ${invoices}">
         <td th:text="${invoice.getCustomerName()}"></td>
         <td th:text="${invoice.getIssueDate()}"></td>
         <td th:text="${invoice.getDueDate()}"></td>
         <td th:text="${invoice.getComment()}"></td>
-        <td th:text="${invoice.getTotalPrice()}"></td>
+        <td th:text="${invoice.getTotalPriceInHUF()}"></td>
+        <td th:text="${invoice.getTotalPriceInEUR()}"></td>
         <td><a th:href="'/invoices/' + ${invoice.getId()}">View invoice</a></td>
     </tr>
     </tbody>
 </table>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item">
-            <a th:if="${page.hasPrevious()}" th:href="'?page=' + ${prevPage} + '&size=' + ${size}">Previous</a>
-
-        </li>
-        <li class="page-item">
-            <a th:if="${page.hasNext()}" th:href="'?page=' + ${nextPage} + '&size=' + ${size}"> Next </a>
-
-        </li>
-    </ul>
-</nav>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
